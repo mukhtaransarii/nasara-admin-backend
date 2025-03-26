@@ -9,7 +9,7 @@ const cartSchema = new mongoose.Schema({
   // New Fields
   status: { type: String, enum: ["Pending", "Shipped", "Delivered", "Cancelled"], default: "Pending" },
   paymentStatus: { type: String, enum: ["Unpaid", "Paid"], default: "Unpaid" },
-  deliveryDate: { type: Date, default: () => new Date(Date.now() - 3 * 24 * 60 * 60 * 1000)}, 
+  deliveryDate: { type: Date, default: () => new Date(Date.now() + 3 * 24 * 60 * 60 * 1000)}, 
 },{ timestamps: true });
 
 const Cart = mongoose.model("Cart", cartSchema);
