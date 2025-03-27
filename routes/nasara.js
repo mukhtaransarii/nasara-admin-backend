@@ -42,8 +42,8 @@ router.get("/get-orders/:userId", async (req, res) => {
 
   try {
     const orders = await Cart.find({ userId });
-    res.status(200).json(orders);
-    console.log(orders)
+    
+    res.status(200).json(orders.reverse());
     
   } catch (error) {
     console.error("Error fetching orders:", error);
@@ -68,7 +68,7 @@ router.delete("/cancel-order/:orderId", async (req, res) => {
 // For admin Panel ui
 router.get("/get-orders/", async (req, res) => {
   const orders = await Cart.find();
-  res.status(200).json(orders);
+  res.status(200).json(orders.reverse());
 });
 
 module.exports = router;
