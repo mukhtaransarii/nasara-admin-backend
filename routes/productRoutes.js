@@ -18,7 +18,7 @@ cloudinary.config({
 // 🔹 Route to Upload Product
 router.post("/add", upload.array("images", 5), async (req, res) => {
   try {
-    const { title, price, category, quantity, unit, description, author } = req.body;
+    const { title, price,originalPrice, category, quantity, unit, description, author } = req.body;
 
     // 🔹 Upload Images to Cloudinary
     const uploadedImages = await Promise.all(
@@ -44,6 +44,7 @@ router.post("/add", upload.array("images", 5), async (req, res) => {
       description,
       author,
       images: uploadedImages, // Store only URLs
+      originalPrice, 
     });
 
     res.status(201).json({ message: "Product added successfully", product: newProduct });

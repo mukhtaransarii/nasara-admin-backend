@@ -10,6 +10,7 @@ const productSchema = new mongoose.Schema({
   author: { type: String, default: "Admin" },
   images: { type: [String]},
   published: { type: Boolean, default: true },
+  originalPrice: Number,
 },{ timestamps: true });
 
 const Product = mongoose.model("Product", productSchema);
